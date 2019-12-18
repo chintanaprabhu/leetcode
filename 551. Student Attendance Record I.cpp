@@ -12,7 +12,13 @@ public:
         return (!(a>1 | l>0));
     }
 };
-
+//====================================================
+class Solution {
+public:
+    bool checkRecord(string s) {
+        return (count(s.begin(),s.end(),'A')<=1 && s.find("LLL")==string::npos);
+    }
+};
 /*std::string::npos
 npos is a static member constant value with the greatest possible value for an element of type size_t. 
 This value, when used as the value for a len (or sublen) parameter in string's member functions, means 
