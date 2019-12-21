@@ -25,11 +25,18 @@ public:
         int k = m+n-1;
         m = m-1;
         n = n-1;
-        while(m >= 0 && n >= 0 ) {
+        while(k >= 0 ) {
+            if(m<0){
+                nums1[k--] = nums2[n--];
+                continue;
+            }
+
+            if(n<0){
+                nums1[k--] = nums1[m--];
+                continue;
+            }
             if(nums1[m] > nums2[n]) nums1[k--] = nums1[m--];
             else nums1[k--] = nums2[n--];
         }
-        while(n >= 0)
-            nums1[k--] = nums2[n--];
-        }
+    }
 };
