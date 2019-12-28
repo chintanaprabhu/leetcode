@@ -30,3 +30,31 @@ public:
     }
 };
 //https://leetcode.com/problems/reverse-linked-list/
+//Recursive======================================================
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+   
+    ListNode *prev = NULL, *next = NULL;
+    ListNode* reverseList(ListNode* head) {
+        ListNode* curr = head;
+        if(curr != NULL) {
+            next = curr->next;
+            curr->next = prev;
+            
+            prev = curr;
+            curr = next;
+            reverseList(curr);
+        }
+        head = prev;
+        return head;
+    }
+};
