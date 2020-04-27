@@ -1,15 +1,14 @@
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
-        int buy;
-        int sell=0;
         if(prices.empty())
             return 0;
-        buy = numeric_limits<int>::min();
-        for ( auto i : prices ) {
-            buy = max(buy, -i);
-            sell = max(sell, buy+i);
+        int profit=0, buy=prices[0];
+        for (int price : prices) {
+            buy = min(price,buy);
+            //int cur_profit = price-buy;
+            profit = max(price-buy,profit);       
         }
-        return sell;
+        return profit;
     }
 };
