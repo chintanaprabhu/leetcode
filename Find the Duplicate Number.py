@@ -18,3 +18,29 @@ class Solution:
                 max_index = index
             nums[index] %= num_of_elements
         return max_index
+
+#using Floyd's Tortoise and Hare (Cycle Detection) algorithm
+class Solution:
+    #convert the problem into linked list cycle II problem
+    def findDuplicate(self, nums: List[int]) -> int:
+        # start hopping from Node_#0
+        slow, fast = 0, 0
+		# Step_#1
+		# Cycle detection
+        # Let slow jumper and fast jumper meet somewhere in the cycle 
+        while True:
+			# slow jumper hops 1 step, while fast jumper hops two steps forward.
+            slow = nums[ slow ]
+            fast = nums[ nums[fast] ]
+            if slow == fast:
+                break
+		# Step_#2
+        # Locate the start node of cycle (i.e., the duplicate number)
+        # fast is reset to the start node of the list
+        fast = 0
+        while True:
+            slow = nums[ slow ]
+            fast = nums[ fast ]
+            if slow == fast:
+                break
+        return fast
