@@ -22,3 +22,25 @@ class Solution:
                     l += 1
 
         return list(result)
+###############################################
+#reduce 3sum to 2sum 
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        allTriplets = set()
+        nums.sort()
+        n = len(nums)
+        for i, curr in enumerate(nums):
+            l = i+1
+            r = n-1
+            while l < r:
+                if curr + nums[l] + nums[r] == 0:
+                    allTriplets.add((curr,nums[l],nums[r]))
+                    l += 1
+                    r -= 1
+                    continue
+                    
+                if curr + nums[l] + nums[r] < 0:                    
+                    l += 1
+                else:
+                    r -= 1
+        return allTriplets
