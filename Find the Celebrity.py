@@ -26,3 +26,26 @@ class Solution:
             if not knows(j, celeb) or knows(celeb, j):
                 return False
         return True
+    
+############################# O(n) time and O(1) space ###################
+# The knows API is already defined for you.
+# return a bool, whether a knows b
+# def knows(a: int, b: int) -> bool:
+
+class Solution:
+    def findCelebrity(self, n: int) -> int:
+        potentialCeleb = 0
+        for i in range(n):
+            if knows(potentialCeleb, i):
+                potentialCeleb = i
+        if self.isCelebrity(potentialCeleb, n):
+            return potentialCeleb
+        return -1
+    
+    def isCelebrity(self, celeb, n):
+        for j in range(n):
+            if celeb == j:
+                continue
+            if not knows(j, celeb) or knows(celeb, j):
+                return False
+        return True
