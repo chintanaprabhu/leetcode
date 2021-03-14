@@ -1,4 +1,6 @@
 class Solution:
+    #binary search to find if the target exists in nums
+    #if target exsits in nums, use subroutine getRange to figure out its lower and upper range in nums 
     def searchRange(self, nums: List[int], target: int) -> List[int]:
         if len(nums) == 0 or target is None:
             return [-1,-1]
